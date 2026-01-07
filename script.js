@@ -1,11 +1,7 @@
-/* ====== 畫面 ====== */
 const scene = document.getElementById("scene");
-
-/* ====== 音訊 ====== */
 const audioDay = document.getElementById("audio-day");
 const audioNight = document.getElementById("audio-night");
 
-/* ====== 停止所有聲音 ====== */
 function stopAllAudio() {
   audioDay.pause();
   audioNight.pause();
@@ -13,7 +9,6 @@ function stopAllAudio() {
   audioNight.currentTime = 0;
 }
 
-/* ====== 切換場景 ====== */
 function switchScene(type) {
   stopAllAudio();
 
@@ -28,19 +23,5 @@ function switchScene(type) {
   }
 }
 
-/* ====== ⏱ 計時器（進站即開始） ====== */
-let seconds = 0;
-const timer = document.getElementById("timer");
-
-setInterval(() => {
-  seconds++;
-
-  const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
-  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
-  const s = String(seconds % 60).padStart(2, "0");
-
-  timer.textContent = `${h}:${m}:${s}`;
-}, 1000);
-
-/* ====== 預設白天 ====== */
+// 預設進站是白天
 switchScene("day");
