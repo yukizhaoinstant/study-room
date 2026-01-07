@@ -1,42 +1,46 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* ====== 畫面 ====== */
+const scene = document.getElementById("scene");
 
-  const scene = document.getElementById("scene");
-  const audioDay = document.getElementById("audio-day");
-  const audioNight = document.getElementById("audio-night");
+/* ====== 音訊 ====== */
+const audioDay = document.getElementById("audio-day");
+const audioNight = document.getElementById("audio-night");
 
-  // ===== 原本的場景 + 音訊邏輯（完全不改行為） =====
+/* ====== 停止所有聲音 ====== */
+function stopAllAudio() {
+  audioDay.pause();
+  audioNight.pause();
+  audioDay.currentTime = 0;
+  audioNight.currentTime = 0;
+}
 
-  let unlocked = false;
+/* ====== 切換場景 ====== */
+function switchScene(type) {
+  stopAllAudio();
 
-  function unlockAudio() {
-    if (unlocked) return;
-
-    [audioDay, audioNight].forEach(audio => {
-      audio.muted = true;
-      audio.play().then(() => {
-        audio.pause();
-        audio.currentTime = 0;
-        audio.muted = false;
-      }).catch(() => {});
-    });
-
-    unlocked = true;
+  if (type === "day") {
+    scene.style.backgroundImage = "url('day.jpg')";
+    audioDay.play().catch(() => {});
   }
 
-  function stopAll() {
-    audioDay.pause();
-    audioDay.currentTime = 0;
-    audioNight.pause();
-    audioNight.currentTime = 0;
+  if (type === "night") {
+    scene.style.backgroundImage = "url('night.jpg')";
+    audioNight.play().catch(() => {});
   }
+}
 
-  window.switchScene = function(type) {
-    unlockAudio();
-    stopAll();
+/* ====== ⏱ 計時器（進站即開始） ====== */
+let seconds = 0;
+const timer = document.getElementById("timer");
 
-    if (type === "day") {
-      scene.style.backgroundImage = 'url("day.jpg")';
-      audioDay.play();
-    }
+setInterval(() => {
+  seconds++;
 
-    if (type === "night
+  const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
+  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+  const s = String(seconds % 60).padStart(2, "0");
+
+  timer.textContent = `${h}:${m}:${s}`;
+}, 1000);
+
+/* ====== 預設白天 ====== */
+switchScene("day");
