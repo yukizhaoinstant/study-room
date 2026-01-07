@@ -1,0 +1,12 @@
+function changeScene(type) {
+  const scene = document.getElementById("scene");
+
+  const scenes = {
+    day: "IMG_1333.jpeg",
+    night: "IMG_1334.jpeg",
+    rain: "IMG_1335.jpeg",
+    library: "IMG_1336.jpeg"
+  };
+
+  scene.style.backgroundImage = `url(${scenes[type]})`;
+}
