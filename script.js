@@ -2,7 +2,7 @@ function changeScene(type) {
   const scene = document.getElementById("scene");
 
   const scenes = {
-    day: "assets/images/room_day.jpg",
+    day: "https://github.com/yukizhaoinstant/zixishi/commit/75f7c7c2e022a8c22dcb09c04af61728277a6529#diff-ddc231cd169c9679b4f7c9b1ffc0fa2a814d57fe1d6f22853674286172d5fea1",
     night: "assets/images/room_night.jpg",
     rain: "assets/images/rain_window.jpg"
   };
