@@ -14,13 +14,6 @@ const scenes = {
 
 function switchScene(type) {
   scene.style.backgroundImage = `url(${scenes[type].image})`;
-  audio.src = scenes[type].sound;
-  audio.play().catch(() => {
-    console.log("Audio blocked until user interaction");
-  });
-}
-function switchScene(type) {
-  scene.style.backgroundImage = `url(${scenes[type].image})`;
 
   audio.pause();                // ① 先停
   audio.src = scenes[type].sound;
