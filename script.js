@@ -41,3 +41,20 @@ function switchScene(type) {
     audioNight.play();
   }
 }
+// ===== 計時器（與場景、音訊完全獨立） =====
+
+let seconds = 0;
+const timerEl = document.getElementById("timer");
+
+function updateTimer() {
+  seconds++;
+
+  const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
+  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+  const s = String(seconds % 60).padStart(2, "0");
+
+  timerEl.textContent = `${h}:${m}:${s}`;
+}
+
+// 每秒更新一次
+setInterval(updateTimer, 1000);
