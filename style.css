@@ -34,3 +34,10 @@ button {
 button:hover {
   background: rgba(0,0,0,0.8);
 }
+#scene{
+  width:100vw;
+  height:100vh;
+  background-image: url("day.jpg");
+  background-size: cover;
+  background-position: center;
+}
