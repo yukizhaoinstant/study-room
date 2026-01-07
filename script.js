@@ -33,3 +33,5 @@ function switchScene(type) {
     console.log("Audio play blocked:", err);
   });
 }
+// 預設顯示白天背景（不播聲音）
+scene.style.backgroundImage = "url(day.jpg)";
