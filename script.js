@@ -41,20 +41,23 @@ function switchScene(type) {
     audioNight.play();
   }
 }
-// ===== 計時器（與場景、音訊完全獨立） =====
+// ===== 計時器（確保 DOM 載入後才開始） =====
 
 let seconds = 0;
-const timerEl = document.getElementById("timer");
 
-function updateTimer() {
-  seconds++;
+document.addEventListener("DOMContentLoaded", () => {
+  const timerEl = document.getElementById("timer");
 
-  const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
-  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
-  const s = String(seconds % 60).padStart(2, "0");
+  function updateTimer() {
+    seconds++;
 
-  timerEl.textContent = `${h}:${m}:${s}`;
-}
+    const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
+    const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+    const s = String(seconds % 60).padStart(2, "0");
 
-// 每秒更新一次
-setInterval(updateTimer, 1000);
+    timerEl.textContent = `${h}:${m}:${s}`;
+  }
+
+  // ⭐ 一進網站就開始
+  setInterval(updateTimer, 1000);
+});
