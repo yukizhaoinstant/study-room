@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>自習室</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div id="scene">
-
-    <!-- ⭐ 計時器（一定要在 body 裡） -->
+    <!-- ⏱ 計時器 -->
     <div id="timer">00:00:00</div>
 
+    <!-- 控制按鈕 -->
     <div class="controls">
       <button onclick="switchScene('day')">☀️ 白天</button>
       <button onclick="switchScene('night')">🌙 夜晚</button>
     </div>
-
   </div>
 
-  <!-- 兩個 audio，各自固定音檔 -->
+  <!-- 音訊 -->
   <audio id="audio-day" src="day.mp3" loop></audio>
   <audio id="audio-night" src="night.mp3" loop></audio>
 
-  <!-- 只能有一個 -->
+  <!-- JS 一定放最後 -->
   <script src="script.js"></script>
-
 </body>
 </html>
